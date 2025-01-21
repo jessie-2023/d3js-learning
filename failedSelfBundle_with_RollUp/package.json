@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rollup": "^2.79.2",
+    "rollup-plugin-babel": "^4.4.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@types/node": "^22.10.7"
+  }
+}
