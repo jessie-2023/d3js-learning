@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { arc, line } from 'd3';
+import {BackgroundCircle} from './component/BackgroundCircle';
+import { EyeCircle } from './component/EyeCircle';
+import { ArcPath } from './component/ArcPath';
+import { LinePath } from './component/LinePath';
 
 const width = 1000;
 const height = 1000;
@@ -17,16 +20,6 @@ const eyeRadius = 25;
 const mouthRadius = 80;
 const mouthWidth = 5;
 
-const arcGenerator = (start: number, end: number) => arc()
-  .innerRadius(mouthRadius)
-  .outerRadius(mouthRadius + mouthWidth)
-  .startAngle(start)
-  .endAngle(end);
-
-const lineGenerator = line<{x: number; y: number}>()
-  .x(d => d.x)
-  .y(d => d.y)
-
 const eyeLine = [
   {x: eyeOffsetX - eyeRadius,  y: -eyeOffsetY - eyeRadius / 4},
   {x: eyeOffsetX + eyeRadius,  y: -eyeOffsetY + eyeRadius / 4},
@@ -38,70 +31,78 @@ const noseLine = [
   {x: eyeOffsetX - eyeRadius,  y: eyeOffsetY + eyeRadius / 4},
 ]
 
-
 const App = () => (
     <svg width={width} height={height}>
       <g transform={`translate(${centerXa}, ${centerYa})`}>
-        <circle
-          r={radius}
-          fill='yellow'
-          stroke='black'
+        <BackgroundCircle 
+          r={radius} 
           strokeWidth={strokeWidth}
+          color='yellow'
         />
-        <circle 
-              cx={-eyeOffsetX} 
-              cy={-eyeOffsetY}  
-              r={eyeRadius}            
-          />
-        <circle 
-            cx={eyeOffsetX} 
-            cy={-eyeOffsetY}  
+        <EyeCircle 
+          x={-eyeOffsetX} 
+          y={-eyeOffsetY}  
+          r={eyeRadius}            
+        />
+        <EyeCircle 
+            x={eyeOffsetX} 
+            y={-eyeOffsetY}  
             r={eyeRadius}            
         />
-        <path d={arcGenerator(Math.PI * 0.5, Math.PI * 1.5)(undefined as never) as string}/>
+        <ArcPath 
+          innerR={mouthRadius - mouthWidth}
+          outerR={mouthRadius}
+          start={Math.PI * 0.5}
+          end={Math.PI * 1.5}
+        />
       </g>
       <g transform={`translate(${centerXb}, ${centerYa})`}>
-        <circle
-          r={radius}
-          fill='green'
-          stroke='black'
+        <BackgroundCircle 
+          r={radius} 
           strokeWidth={strokeWidth}
+          color='grey'
         />
-        <circle 
-              cx={-eyeOffsetX} 
-              cy={-eyeOffsetY}  
+        <ArcPath 
+          innerR={eyeOffsetX * 2 - eyeRadius}
+          outerR={eyeOffsetX * 2}
+          start={Math.PI * 1.6}
+          end={Math.PI * 1.85}
+        />
+        <EyeCircle 
+              x={-eyeOffsetX} 
+              y={-eyeOffsetY}  
               r={eyeRadius}            
           />
-        <path 
-          d={lineGenerator(eyeLine) as string}
-          stroke='black'
-          strokeWidth={strokeWidth}
-          fill='none'
+        <LinePath
+          width={eyeRadius}
+          data={eyeLine}
         />
-        <path d={arcGenerator(Math.PI * 0.5, Math.PI * 1.1)(undefined as never) as string}/>
+        <ArcPath 
+          innerR={mouthRadius - mouthWidth * 2}
+          outerR={mouthRadius}
+          start={Math.PI * 0.5}
+          end={Math.PI * 1.05}
+        />
       </g>
       <g transform={`translate(${centerXa}, ${centerYb})`}>
-        <circle
-          r={radius}
-          fill='pink'
-          stroke='black'
-          strokeWidth={strokeWidth}
+        <BackgroundCircle 
+            r={radius} 
+            strokeWidth={strokeWidth}
+            color='pink'
         />
-        <circle 
-              cx={-eyeOffsetX} 
-              cy={-eyeOffsetY}  
-              r={eyeRadius}            
-          />
-        <circle 
-            cx={eyeOffsetX} 
-            cy={-eyeOffsetY}  
+        <EyeCircle 
+          x={-eyeOffsetX} 
+          y={-eyeOffsetY}  
+          r={eyeRadius}            
+        />
+        <EyeCircle 
+            x={eyeOffsetX} 
+            y={-eyeOffsetY}  
             r={eyeRadius}            
         />
-        <path 
-          d={lineGenerator(noseLine) as string}
-          stroke='black'
-          strokeWidth={strokeWidth}
-          fill='none'
+        <LinePath
+          width={eyeRadius * 0.5}
+          data={noseLine}
         />
       </g>
     </svg>
