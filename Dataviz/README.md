@@ -1,4 +1,13 @@
+# "/about-fetch"
+- Loading data with fetch, async, and await
 
+# "/interact-with-react"
+A program that follows your mouse with a circle
+- Mouse events
+- Unidirectional data flow
+
+- The notion of "State"
+- React's useState hook
 
 
 # React + TypeScript + Vite
