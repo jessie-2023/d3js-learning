@@ -1,13 +1,20 @@
-# "/about-fetch"
+# "/load-data"
 - Loading data with fetch, async, and await
+- Parsing CSV data with D3
+- Counting rows & columns
+- Estimating data size
+- Constructing & displaying text with D3 & CSS
+- Using d3.csv, csvParse & csvFormat 
 
 # "/interact-with-react"
 A program that follows your mouse with a circle
 - Mouse events
 - Unidirectional data flow
-
 - The notion of "State"
 - React's useState hook
+
+# "/csv-with-d3"
+
 
 
 # React + TypeScript + Vite
