@@ -1,5 +1,5 @@
 import {csv, csvFormat, csvParse} from 'd3'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const colorUrl = 'https://gist.githubusercontent.com/jessie-2023/977d5dc2b9589b7bdc0214a12d5bb0df/raw/cssNamedColors.csv'
 const width = 960;
@@ -16,9 +16,15 @@ const message = data => {
 export const LoadData = () => {
   const [data, setData] = useState(null);
   
-  csv(colorUrl).then(data => {
+  useEffect(() => {
+    csv(colorUrl).then(setData);
+  }, []);
+
+/** infinite loop: state update(setData) & side effect(fetch, csv) CANNOT directly in the body unconditionally
+ csv(colorUrl).then(data => {
     setData(data);
-  })
+    console.log('fetch data and update state'); 
+*/  
 
 /**  Parsing data with D3
   csv(colorUrl) // take in a URL, return a promise
