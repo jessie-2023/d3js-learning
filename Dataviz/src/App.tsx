@@ -1,4 +1,4 @@
-import './styles.css'
+import './styles.scss'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { WithReact } from "./pages/WithReact";
 import { LoadData } from "./pages/LoadData";

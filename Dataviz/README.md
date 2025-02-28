@@ -15,7 +15,8 @@ A program that follows your mouse with a circle
 
 # "/world-atlas"
 - d3.json to receive to TopoJSON from WorldAtlas project
-- topojson.feature to convert TopoJSON to GeoJSON 
+- topojson.feature to convert TopoJSON geometries to GeoJSON geometries
+- topojson.mesh to avoid the double rendering of shared arcs, the optional filter function to further remove the specified arcs
 - d3.geoEquanEarch (or others) to project [lon, lat] to SVG coordinates
 - d3.geoPath to convert GeoJSON features into SVG path strings
 - *use country name as key, because country id could be missing or dup in this dataset
