@@ -13,9 +13,12 @@ A program that follows your mouse with a circle
 - The notion of "State"
 - React's useState hook
 
-# "/csv-with-d3"
-
-
+# "/world-atlas"
+- d3.json to receive to TopoJSON from WorldAtlas project
+- topojson.feature to convert TopoJSON to GeoJSON 
+- d3.geoEquanEarch (or others) to project [lon, lat] to SVG coordinates
+- d3.geoPath to convert GeoJSON features into SVG path strings
+- *use country name as key, because country id could be missing or dup in this dataset
 
 # React + TypeScript + Vite
 
